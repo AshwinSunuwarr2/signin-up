@@ -21,14 +21,14 @@ export default function WelcomeScreen({ navigation }) {
                     <Text style={styles.btnTxt}>Sign Up</Text>
                 </TouchableOpacity>
             </View>
-            <StatusBar barStyle={'light-content'} backgroundColor={'black'} />
+            {/* <StatusBar barStyle={'light-content'} backgroundColor={'black'} /> */}
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: { flex: 1, width: '100%', flexDirection: 'column', backgroundColor: '#c5f0d4' },
-    welcomeTxt: { fontSize: titles.txt1, fontWeight: '700', fontFamily: 'serif', padding: 9, alignSelf: 'center', color: colors.col1, textShadowColor: 'rgba(0,0,0,0.4)', textShadowOffset: { width: -1, height: 1 }, textShadowRadius: 12 },
+    welcomeTxt: { fontSize: titles.txt1, fontWeight: '700', fontFamily: 'serif', padding: 9, alignSelf: 'center', color: colors.col1, textShadowColor: 'rgba(0,0,0,0.4)', textShadowOffset: { width: -1, height: 1 }, textShadowRadius: 12, marginTop: 30 },
     imgContainer: { width: '100%', alignItems: 'center', justifyContent: 'center', height: '55%' },
     welcomeImage: { width: '98%', resizeMode: 'contain', height: '100%' },
     appDescription: { fontSize: titles.txt3, margin: 4, alignSelf: 'center', width: '78%', color: '#39453d' },

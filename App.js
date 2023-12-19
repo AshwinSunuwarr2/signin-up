@@ -4,10 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import LoginScreen from './src/screens/LoginSignup/login';
 import RootNavigation from './src/screens/RootNavigation';
+import SignupScreen from './src/screens/LoginSignup/signup';
 
 export default function App() {
   return (
-    // <WelcomeScreen />
     <RootNavigation />
   )
 }

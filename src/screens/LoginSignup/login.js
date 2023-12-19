@@ -1,25 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, StatusBar, TextInput } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
-import { colors, hr80, titles, forgot } from '../../globals/styling';
+import { colors, hr80, titles, forgot, txtInputContainer, loginSignupBtn, loginSignupTxt, baseView, newSIgnIn, gfContainer, txtInput } from '../../globals/styling';
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
+    const [focusUser, setFocusUser] = useState(false);
+    const [focusPassword, setFocusPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
     return (
         <View style={styles.container}>
             <Text style={styles.headTxt}>Login</Text>
-            <View style={{ flex: 0, flexDirection: 'column', justifyContent: 'center', height: '55%' }}>
-                <View style={styles.txtInputContainer}>
-                    <AntDesign name="user" size={24} color="black" />
-                    <TextInput placeholder='Username' style={styles.txtInput} />
+            <View style={{ flex: 0, flexDirection: 'column', justifyContent: 'center', marginTop: 65 }}>
+                <View style={txtInputContainer}>
+                    <AntDesign name="user" size={22} color={focusUser == false ? 'black' : 'red'} />
+                    <TextInput placeholder='Username' style={txtInput} onFocus={() => {
+                        setFocusUser(true);
+                        setFocusPassword(false);
+                        setShowPassword(false);
+                    }} />
                 </View>
-                <View style={styles.txtInputContainer}>
-                    <AntDesign name="key" size={24} color="black" />
-                    <TextInput placeholder='Password' style={styles.txtInput} />
+                <View style={txtInputContainer}>
+                    <AntDesign name="key" size={22} color={focusPassword == false ? 'black' : 'red'} />
+                    <TextInput placeholder='Password' style={txtInput} onFocus={() => {
+                        setFocusUser(false)
+                        setFocusPassword(true)
+                    }}
+                        secureTextEntry={showPassword == false ? true : false}
+                    />
+                    <TouchableOpacity>
+                        <Feather name={showPassword == false ? 'eye-off' : 'eye'} size={24} color="black" onPress={() => { setShowPassword(!showPassword) }} />
+                    </TouchableOpacity>
+
+
                 </View>
 
-                <TouchableOpacity style={styles.loginBtn}>
-                    <Text style={styles.loginTxt}>Login</Text>
+                <TouchableOpacity style={loginSignupBtn}>
+                    <Text style={loginSignupTxt}>Login</Text>
                 </TouchableOpacity>
 
                 <View style={styles.forgotView}>
@@ -27,43 +46,48 @@ export default function LoginScreen() {
                         <Text style={forgot}>Forgot password?</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={hr80}></View>
             </View>
 
-            <View style={styles.orView}>
-                <Text style={{ fontSize: 18, fontWeight: '400' }}>OR</Text>
-            </View>
-            <View style={styles.signInWithGf}>
-                <Text style={{ fontSize: titles.txt3, letterSpacing: 0.25, color: colors.col1 }}>Signin with:</Text>
-            </View>
-            <View style={styles.gfContainer}>
-                <TouchableOpacity style={styles.gfBtn}>
-                    <AntDesign name="google" size={42} color="#ed6111" />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.gfBtn}>
-                    <AntDesign name="facebook-square" size={42} color="blue" />
-                </TouchableOpacity>
+            <View style={baseView}>
+                <View style={newSIgnIn}>
+                    <Text style={{ fontSize: titles.txt3 }}>Don't have an account?</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('signupPage')}><Text style={{ fontSize: titles.txt3, color: colors.col3 }}> Sign up</Text></TouchableOpacity>
+                </View>
+                <View style={{ paddingVertical: 10 }}>
+                    <View style={hr80}></View>
+                </View>
+                <View style={styles.orView}>
+                    <Text style={{ fontSize: 18, fontWeight: '400' }}>OR</Text>
+                </View>
+                <View style={styles.signInWithGf}>
+                    <Text style={{ fontSize: titles.txt3, letterSpacing: 0.25, color: colors.col1 }}>Sign in with:</Text>
+                </View>
+                <View style={gfContainer}>
+                    <TouchableOpacity style={styles.gfBtn}>
+                        <AntDesign name="google" size={35} color="#ed6111" />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.gfBtn}>
+                        <AntDesign name="facebook-square" size={35} color="blue" />
+                    </TouchableOpacity>
+                </View>
             </View>
 
-            <StatusBar barStyle={'light-content'} backgroundColor={'black'} />
+            {/* <StatusBar barStyle={'light-content'} backgroundColor={'black'} /> */}
 
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, flexDirection: 'column' },
+    container: { flex: 1, flexDirection: 'column', backgroundColor: '#c5f0d4' },
     headTxt: { fontSize: titles.txt1, color: colors.col1, fontWeight: '700', alignSelf: 'center', marginTop: 100, fontFamily: 'serif' },
-    txtInputContainer: { flex: 0, flexDirection: 'row', borderWidth: 1, margin: 10, borderRadius: 25, alignItems: 'center', padding: 4, width: '85%', alignSelf: 'center' },
-    txtInput: { padding: 7, fontSize: titles.txt3 },
 
-    loginBtn: { backgroundColor: colors.col1, width: '85%', borderRadius: 25, alignItems: 'center', alignSelf: 'center', margin: 4, elevation: 6 },
-    loginTxt: { fontSize: titles.txt2, color: colors.col2, padding: 7, fontWeight: '700', letterSpacing: 0.5 },
+    // txtInput: { padding: 7, fontSize: titles.txt3, width: '82%' },
 
-    forgotView: { alignItems: 'center', padding: 14, marginBottom: 15 },
-    orView: { alignItems: 'center' },
+    forgotView: { alignItems: 'center', padding: 14, marginBottom: 15, marginTop: 10 },
+    orView: { alignItems: 'center', marginTop: 16 },
     signInWithGf: { alignItems: 'center', marginTop: 7 },
-    gfContainer: { flex: 0, flexDirection: 'row', alignItems: 'center', margin: 7, padding: 15, justifyContent: 'center' },
-    gfBtn: { margin: 11, elevation: 10 }
+
+    gfBtn: { margin: 16, borderRadius: 14, backgroundColor: '#c5f0d4', elevation: 7, padding: 4 }
 
 })
