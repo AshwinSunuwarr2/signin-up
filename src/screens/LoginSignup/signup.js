@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-nativ
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
-import { colors, hr80, titles, txtInputContainer, loginSignupBtn, loginSignupTxt, baseView, gfContainer, txtInput } from '../../globals/styling';
+import { colors, hr80, titles, txtInputContainer, loginSignupBtn, loginSignupTxt, baseView, gfContainer, txtInput, container } from '../../globals/styling';
 
 export default function LoginScreen({ navigation }) {
     const [emailFocus, setEmailFocus] = useState(false)
@@ -14,7 +14,7 @@ export default function LoginScreen({ navigation }) {
     const [focusPhone, setFocusPhone] = useState(false)
 
     return (
-        <View style={styles.container}>
+        <View style={container}>
             <Text style={styles.headTxt}>Sign up</Text>
             <View style={{ flex: 0, flexDirection: 'column', justifyContent: 'center' }}>
                 <View style={txtInputContainer}>
@@ -126,7 +126,6 @@ export default function LoginScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, flexDirection: 'column', backgroundColor: colors.colMain },
     headTxt: { fontSize: titles.txt1, color: colors.col1, fontWeight: '700', alignSelf: 'center', marginVertical: 30, fontFamily: 'serif' },
 
     newSignIn: { flex: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 24 },

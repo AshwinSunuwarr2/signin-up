@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, StatusBar, TextInput }
 import { NavigationContainer } from '@react-navigation/native';
 
 import LoginScreen from './src/screens/LoginSignup/login';
-import RootNavigation from './src/screens/RootNavigation';
+import RootNavigation from './src/RootNavigation';
 import SignupScreen from './src/screens/LoginSignup/signup';
 
 export default function App() {

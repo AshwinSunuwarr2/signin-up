@@ -3,20 +3,38 @@ module.exports = {
         colMain: '#c5f0d4',
         col1: 'green',
         col2: 'white',
-        col3: 'red'
+        col3: 'red',
+        colGrey: '#BEBEBE'
+    },
+
+    container: {
+        backgroundColor: '#c5f0d4',
+        flex: 1,
+        flexDirection: 'column'
     },
 
     titles: {
         txt1: 30,
         txt2: 24,
-        txt3: 16
+        txt3: 18,
+        txt4: 16
     },
+    AppName: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        fontFamily: 'serif',
+        padding: 4,
+        color: '#5CA763'
+    },
+
     hr80: { width: '80%', borderWidth: 0.2, borderColor: 'grey', alignSelf: 'center', margin: 4 },
 
     forgot: {
         color: 'red',
         margin: 2
     },
+
+    IconStyle: { color: 'green', width: 26, height: 26, margin: 2, elevation: 4 },
 
     txtInputContainer: {
         width: '85%',

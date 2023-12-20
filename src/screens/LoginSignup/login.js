@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, StatusBar, TextInput }
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
-import { colors, hr80, titles, forgot, txtInputContainer, loginSignupBtn, loginSignupTxt, baseView, newSIgnIn, gfContainer, txtInput } from '../../globals/styling';
+import { colors, hr80, titles, forgot, txtInputContainer, loginSignupBtn, loginSignupTxt, baseView, newSIgnIn, gfContainer, txtInput, container } from '../../globals/styling';
 
 export default function LoginScreen({ navigation }) {
     const [focusUser, setFocusUser] = useState(false);
@@ -11,7 +11,7 @@ export default function LoginScreen({ navigation }) {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
-        <View style={styles.container}>
+        <View style={container}>
             <Text style={styles.headTxt}>Login</Text>
             <View style={{ flex: 0, flexDirection: 'column', justifyContent: 'center', marginTop: 65 }}>
                 <View style={txtInputContainer}>
@@ -37,7 +37,7 @@ export default function LoginScreen({ navigation }) {
 
                 </View>
 
-                <TouchableOpacity style={loginSignupBtn}>
+                <TouchableOpacity style={loginSignupBtn} onPress={() => navigation.navigate('homePage')}>
                     <Text style={loginSignupTxt}>Login</Text>
                 </TouchableOpacity>
 
@@ -79,7 +79,6 @@ export default function LoginScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, flexDirection: 'column', backgroundColor: '#c5f0d4' },
     headTxt: { fontSize: titles.txt1, color: colors.col1, fontWeight: '700', alignSelf: 'center', marginTop: 100, fontFamily: 'serif' },
 
     // txtInput: { padding: 7, fontSize: titles.txt3, width: '82%' },
